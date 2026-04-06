@@ -24,6 +24,7 @@ Mac/Linux:
 export OPENROUTER_API_KEY="your_api_key_here"
 
 4. Run the application (HAS TO OPEN CMD ON THE SAME FOLDER LOCATION AS WHERE THE FILE IS EXTRACTED):
+
 streamlit run app.py
 
 ## 📄 License
