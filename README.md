@@ -17,10 +17,10 @@ pip install -r requirements.txt
 - Generate your API key
 - Set it as an environment variable:
 
-- Windows (PowerShell):
+## Windows (PowerShell):
 $env:OPENROUTER_API_KEY="your_api_key_here"
 
-- Mac/Linux:
+## Mac/Linux:
 export OPENROUTER_API_KEY="your_api_key_here"
 
 4. Run the application (HAS TO OPEN CMD ON THE SAME FOLDER LOCATION AS WHERE THE FILE IS EXTRACTED):
