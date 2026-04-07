@@ -1,5 +1,5 @@
 # Task Forge Agent
-Personal Productivity Assistant, lightweighted application designed to help users manage tasks, reminders, and quick actions efficiently without relying on cloud services.  
+Personal Productivity Assistant, a lightweight application designed to help users manage tasks, reminders, and quick actions efficiently without relying on cloud services.  
 
 ## ⚙️ Installation & Setup
 
