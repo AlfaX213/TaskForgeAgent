@@ -20,7 +20,7 @@ OPENROUTER_MODEL = "openrouter/free"
 # =========================
 # CONFIG
 # =========================
-APP_VERSION = "0.2.2-alpha"
+APP_VERSION = "1.0.0"
 
 # Path to the local SQLite database file
 DB_PATH = "productivity_agent.db"
