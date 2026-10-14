@@ -1,7 +1,6 @@
 import sqlite3
 import os
 import json
-from unittest import result
 from openai import OpenAI  # type: ignore
 import webbrowser
 from pathlib import Path
@@ -178,7 +177,7 @@ You are the decision layer for a local productivity agent.
 
 Your job is to classify the user's request and return ONLY valid JSON.
 
-AAvailable intents:
+Available intents:
 - add_task
 - show_tasks
 - complete_task
@@ -206,8 +205,8 @@ Return JSON in this format:
   "target": null,
   "text": null,
   "status": null,
-  "message": "..."
-  "reminder_id": null,
+  "message": "...",
+  "reminder_id": null
 }
 Rules:
 - For add_task, put task text in "content"
@@ -236,8 +235,29 @@ Rules:
         ],
     )
 
-    raw = response.choices[0].message.content
-    return json.loads(raw)
+    raw = response.choices[0].message.content or ""
+    raw = raw.strip()
+
+    # Strip markdown code fences if the model added them
+    if raw.startswith("```"):
+        raw = raw.strip("`")
+        if raw.lower().startswith("json"):
+            raw = raw[4:]
+        raw = raw.strip()
+
+    # Fall back to the first {...} block if there's extra text around it
+    if not raw.startswith("{"):
+        start, end = raw.find("{"), raw.rfind("}")
+        if start != -1 and end != -1:
+            raw = raw[start:end + 1]
+
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        return {
+            "intent": "general_reply",
+            "message": raw or "The AI returned an empty response. Please try again.",
+        }
 # Create the Agent Router
 def agent_router(user_input: str) -> str:
     try:
