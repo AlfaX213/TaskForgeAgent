@@ -1,3 +1,8 @@
+![TaskForge Agent Dashboard]
+(1.png)
+(2.png)
+(3.png)
+
 # Task Forge Agent
 Personal Productivity Assistant, a lightweight application designed to help users manage tasks, reminders, and quick actions efficiently without relying on cloud services.  
 
